@@ -21,7 +21,11 @@ v0.2.10 (unreleased)
 To avail of fixes in an unreleased version, please download a ZIP file
 `directly from GitHub <https://github.com/dw/mitogen/>`_.
 
-*(no changes)*
+Fixes
+~~~~~
+
+* :gh:pull:`683`: Previously broken :mod:`mitogen.fakessh` functionality
+  is restored
 
 
 v0.2.9 (2019-11-02)
