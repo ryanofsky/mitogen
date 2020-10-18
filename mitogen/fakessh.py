@@ -491,8 +491,10 @@ def run(dest, router, args, deadline=None, econtext=None):
     fakessh.name = u'fakessh.%d' % (context_id,)
 
     sock1, sock2 = socket.socketpair()
-    sock1.set_inheritable(True)
-    sock2.set_inheritable(True)
+    if hasattr(sock1, 'set_inheritable'):
+        # socket.socket.set_inheritable is coming from python 3.4, before descriptors were always inheritable
+        sock1.set_inheritable(True)
+        sock2.set_inheritable(True)
 
     stream = mitogen.core.MitogenProtocol.build_stream(router, context_id, mitogen.context_id)
     stream.name = u'fakessh'
